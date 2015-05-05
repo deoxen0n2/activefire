@@ -104,6 +104,17 @@ describe('Base', function() {
   });
 
   describe('#update()', function() {
+    it('should add new attributes to the persisted instance', function(done) {
+      Book.create(bookData1)
+        .then(function(book) {
+          return book.update({ rating: 5.0 });
+        })
+        .then(function(book) {
+          expect(book.rating).to.be.equal(5.0);
+          expect(book.updated_at).to.not.be.equal(book.created_at);
+        }, _throw)
+        .done(done);
+    });
   });
 
   describe('#destroy()', function() {

@@ -7,7 +7,9 @@
 * [x] create
 * [ ] hasOne
 * [ ] hasMany, hasMay(collection, { through: })
-* [ ] update *test*
+* [x] update
+* [ ] reload *test*
+* [ ] on('value'), on('child_added'), ...
 * [ ] destroy *test*
 * [ ] transaction
 * [x] find
