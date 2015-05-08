@@ -3,10 +3,11 @@
 * [x] id
 * [x] all, Book.all.each
 * [x] new
+* [ ] new with hasMany, belongsTo options *test*
+* [ ] default attributes
 * [x] save
+* [ ] save with associations *test*
 * [x] create
-* [ ] hasOne
-* [ ] hasMany, hasMay(collection, { through: })
 * [x] update
 * [ ] reload *test*
 * [ ] on('value'), on('child_added'), ...
@@ -21,8 +22,8 @@
 * [ ] clear *test*
 
 ## Associations
-* [ ] build
-* [ ] create
+* [ ] build *test*
+* [ ] create *test*
 * [ ] find
 * [ ] findBy(key, value) *next*
 * [ ] findByIndex

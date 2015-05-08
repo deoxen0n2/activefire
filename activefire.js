@@ -2,7 +2,7 @@ var Firebase = require('firebase');
 var _ = require('underscore');
 
 var Base = require('./lib/base');
-var Associations = {};
+var Associations = require('./lib/associations');
 
 var ActiveFire = {};
 

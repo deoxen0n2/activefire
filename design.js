@@ -15,20 +15,28 @@ ActiveFire.authWithPassword({
 function _doTheRest(err, userData) {
   if (err) throw err;
 
-  // Declare your model.
+  // Declare your models.
+  // For simplicity, assume book has only one author.
   var Book = new ActiveFire.Base('/books');
-
-  // Initiate it.
-  var sevenHabitsOfTeens = Book.new({
-    title: '7 habits of highly effective teens',
-    author: 'Sean Covey'
+  var Author = new ActiveFire.Base('/authors', {
+    hasMany: { books: { model: Book, key: 'author_id' } }
   });
 
-  // Save.
-  sevenHabitsOfTeens.save()
-    .then(function() {
-      console.log('Your book is cool!');
-    }, function(err) {
-      console.log('Ooch.. your book is still cool, but something went wrong:', err);
+  // Create them.
+  Author.create({
+    fullName: 'Sean Covey'
+  })
+  .then(function(sean) {
+    return sean.books.create({
+      title: 'The 7 Habits of Highly Effective Teens',
+      isbn: '978-1476764665'
     });
+  }, function(err) {
+    console.log('Ooch.. something went wrong:', err);
+  })
+  .then(function() {
+    console.log('Your book is cool!');
+  }, function(err) {
+    console.log('Ooch.. your book is still cool, but something went wrong:', err);
+  });
 }

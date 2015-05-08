@@ -8,6 +8,12 @@ var config = {
   url: 'https://[app].firebaseio.com/'
 };
 
+var Author = new Base('/authors', { config: config });
+
+var authorData1 = {
+  fullName: 'Dennis M. Ritchie'
+};
+
 var Book = new Base('/books', { config: config });
 
 var bookData1 = {
@@ -54,7 +60,10 @@ describe('Base', function() {
   });
 
   beforeEach(function(done) {
-    Book.clear().then(done, _throw);
+    Q.all([ Author.clear(), Book.clear() ])
+      .then(function() {
+        done();
+      }, _throw);
   });
 
   describe('.all()', function() {
@@ -118,6 +127,35 @@ describe('Base', function() {
   });
 
   describe('#destroy()', function() {
+  });
+
+  describe('#addRef()', function() {
+    it('should add reference id of another persisted instance to the instance', function(done) {
+      Author.create(authorData1)
+        .then(function(author) {
+          Book.create(bookData1)
+            .then(function(book) {
+              author.addRef('books', book)
+                .then(function() {
+                  expect(author.books_ids[book.id]).to.be.true;
+                })
+                .done(done);
+            });
+        });
+    });
+
+    it('should add reference id to the instance', function(done) {
+      var id = 2161;
+
+      Author.create(authorData1)
+        .then(function(author) {
+          author.addRef('books', id)
+            .then(function() {
+              expect(author.books_ids[id]).to.be.true;
+            })
+            .done(done);
+        });
+    });
   });
 });
 
