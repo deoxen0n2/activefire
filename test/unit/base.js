@@ -89,6 +89,7 @@ describe('Base', function() {
           Book.find(books[1].id)
             .then(function(book2) {
               expect(book2.title).to.be.equal(bookData2.title);
+              expect(book2._internals.self).to.exist;
             }, _throw)
             .done(done);
         });
