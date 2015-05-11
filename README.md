@@ -1,5 +1,5 @@
 # ActiveFire
-Rails's ActiveRecord-inspired model for Firebase.
+Rails's ActiveRecord-inspired model for Firebase. Still in (very slow) development.
 
 ## Usage
 ```bash
