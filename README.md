@@ -8,7 +8,7 @@ $ npm install activefire
 
 And in your js file:
 ```js
-var ActiveFire = require('./activefire');
+var ActiveFire = require('activefire');
 
 // Setup config once.
 ActiveFire.configure({
