@@ -14,7 +14,7 @@
 * [ ] destroy *test*
 * [ ] transaction
 * [x] find
-* [ ] findBy(key, value) *next*
+* [x] findBy(key, value)
 * [ ] findByIndex
 * [ ] where(key, value) *next*
 * [ ] limit

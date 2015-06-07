@@ -96,6 +96,21 @@ describe('Base', function() {
     });
   });
 
+  describe('.findBy()', function() {
+    it('should finds the right persisted instance', function(done) {
+      _createTestSet()
+        .then(function(books) {
+          Book.findBy('isbn', books[1].isbn)
+            .then(function(book2) {
+              console.log('in findBy():', book2);
+              expect(book2.title).to.be.equal(bookData2.title);
+              expect(book2._internals.self).to.exist;
+            }, _throw)
+            .done(done);
+        });
+    });
+  });
+
   describe('.new()', function() {
   });
 
