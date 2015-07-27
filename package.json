@@ -1,6 +1,6 @@
 {
   "name": "activefire",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "ActiveRecord for Firebase.",
   "main": "activefire.js",
   "scripts": {
