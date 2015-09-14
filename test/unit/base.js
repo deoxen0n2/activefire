@@ -83,7 +83,7 @@ describe('Base', function() {
   });
 
   describe('.find()', function() {
-    it('should finds the right persisted instance', function(done) {
+    it('should find the right persisted instance', function(done) {
       _createTestSet()
         .then(function(books) {
           Book.find(books[1].id)
@@ -92,6 +92,18 @@ describe('Base', function() {
               expect(book2._internals.self).to.exist;
             }, _throw)
             .done(done);
+        });
+    });
+
+    it('should reject when record is not found', function(done) {
+      _createTestSet()
+        .then(function(books) {
+          Book.find('nonExistId')
+            .catch(function(notFoundError) {
+              expect(notFoundError).to.be.a.instanceof(Error);
+              expect(notFoundError.message).to.match(/not found/);
+              done()
+            })
         });
     });
   });
