@@ -106,6 +106,19 @@ describe('Base', function() {
             })
         });
     });
+
+    it('should return immediately if given an object', function(done) {
+      // TODO: Should add a spy on `self.internals.self.firebaseRef.child`?
+      _createTestSet()
+        .then(function(books) {
+          Book.find(books[1])
+            .then(function(book2) {
+              expect(book2.title).to.be.equal(bookData2.title);
+              expect(book2._internals.self).to.exist;
+            }, _throw)
+            .done(done);
+        });
+    });
   });
 
   describe('.findBy()', function() {
@@ -185,4 +198,3 @@ describe('Base', function() {
     });
   });
 });
-
