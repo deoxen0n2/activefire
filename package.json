@@ -19,7 +19,7 @@
   "author": "Saran Siriphantnon",
   "license": "MIT",
   "dependencies": {
-    "firebase": "^2.2.7",
+    "firebase": "^2.3.2",
     "q": "^1.3.0",
     "underscore": "^1.8.3"
   },
