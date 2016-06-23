@@ -1,6 +1,14 @@
 # ActiveFire
 Rails's ActiveRecord-inspired model for Firebase. Still in (very slow) development.
 
+## Status
+
+I've rewritten this project in TypeScript and it already worked with Firebase 3. Now I have 1 production server running with it but I need time to collect some more thoughts on this. So...
+
+> Don't Use This Library.
+
+In the meantime, if you want to collaborate on this idea please let me know. I'm always available at deoxen0n2@gmail.com. Thanks you.
+
 ## Usage
 ```bash
 $ npm install activefire
@@ -51,6 +59,13 @@ function _doTheRest(err, userData) {
   });
 }
 ```
+
+## Development
+
+Right now I'm working on improving and finishing `v1` of this library. The rewrite version leverages the multi-path update feature so it can guarantee atomic operations for some tasks and it does not use external Promise library anymore (since Firebase already support this interface on v2.4+ SDK). It also benefits from strong type system from TypeScript. The goals of this project will be:
+
+1. Thin wrapper around Firebase JavaScript SDK
+2. Provide common and useful patterns
 
 ## Tests
 ```bash
